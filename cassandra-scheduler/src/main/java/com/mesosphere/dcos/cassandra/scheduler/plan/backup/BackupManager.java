@@ -1,18 +1,18 @@
 package com.mesosphere.dcos.cassandra.scheduler.plan.backup;
 
-import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
-import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
-import com.mesosphere.dcos.cassandra.common.tasks.backup.BackupRestoreContext;
 import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.offer.ClusterTaskOfferRequirementProvider;
-import com.mesosphere.dcos.cassandra.scheduler.resources.BackupRestoreRequest;
+import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
+import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
+import com.mesosphere.dcos.cassandra.common.tasks.backup.BackupRestoreContext;
+import com.mesosphere.dcos.cassandra.scheduler.resources.BackupRestoreRequest;
+import com.mesosphere.sdk.scheduler.plan.DefaultPhase;
+import com.mesosphere.sdk.scheduler.plan.Phase;
+import com.mesosphere.sdk.scheduler.plan.Step;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.sdk.state.StateStore;
 
-import org.apache.mesos.scheduler.plan.DefaultPhase;
-import org.apache.mesos.scheduler.plan.Phase;
-import org.apache.mesos.scheduler.plan.Step;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
-import org.apache.mesos.state.StateStore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

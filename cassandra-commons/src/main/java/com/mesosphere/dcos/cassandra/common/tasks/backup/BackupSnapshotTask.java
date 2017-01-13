@@ -16,8 +16,8 @@
 package com.mesosphere.dcos.cassandra.common.tasks.backup;
 
 import com.mesosphere.dcos.cassandra.common.tasks.*;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
 import org.apache.mesos.Protos;
-import org.apache.mesos.offer.TaskUtils;
 
 import java.util.Optional;
 
@@ -79,11 +79,11 @@ public class BackupSnapshotTask extends CassandraTask {
 
         Protos.TaskInfo completedTemplate = Protos.TaskInfo.newBuilder(template)
             .setName(name)
-            .setTaskId(TaskUtils.toTaskId(name))
+            .setTaskId(CommonTaskUtils.toTaskId(name))
             .setData(data.getBytes())
             .build();
 
-        completedTemplate = org.apache.mesos.offer.TaskUtils.clearTransient(completedTemplate);
+        completedTemplate = CommonTaskUtils.clearTransient(completedTemplate);
 
         return new BackupSnapshotTask(completedTemplate);
     }

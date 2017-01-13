@@ -18,13 +18,13 @@ package com.mesosphere.dcos.cassandra.executor;
 import com.google.common.collect.ImmutableSet;
 import com.mesosphere.dcos.cassandra.common.tasks.*;
 import com.mesosphere.dcos.cassandra.executor.metrics.MetricsConfig;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
 import org.apache.cassandra.db.SystemKeyspace;
 import org.apache.cassandra.schema.SchemaKeyspace;
 import org.apache.cassandra.tools.NodeProbe;
 import org.apache.mesos.ExecutorDriver;
 import org.apache.mesos.Protos;
-import org.apache.mesos.executor.ProcessTask;
-import org.apache.mesos.offer.TaskUtils;
+import com.mesosphere.sdk.executor.ProcessTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -184,7 +184,7 @@ public class CassandraDaemonProcess extends ProcessTask {
             // Note also that the `ProcessTask` class calls `System.exit(), abort here is
             // probably cleaner
             LOGGER.error("Failed to initialize daemon process", ex);
-            TaskUtils.sendStatus(
+            CommonTaskUtils.sendStatus(
                     driver,
                     Protos.TaskState.TASK_FAILED,
                     taskInfo.getTaskId(),

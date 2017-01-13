@@ -2,8 +2,8 @@ package com.mesosphere.dcos.cassandra.scheduler.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
+import com.mesosphere.sdk.state.StateStore;
 import org.apache.mesos.Protos;
-import org.apache.mesos.state.StateStore;
 
 import java.util.Optional;
 

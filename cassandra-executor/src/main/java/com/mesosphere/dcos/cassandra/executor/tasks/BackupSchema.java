@@ -22,9 +22,9 @@ import com.mesosphere.dcos.cassandra.common.tasks.backup.BackupSchemaTask;
 import com.mesosphere.dcos.cassandra.executor.CassandraDaemonProcess;
 import com.mesosphere.dcos.cassandra.executor.backup.BackupStorageDriver;
 import com.mesosphere.dcos.cassandra.executor.backup.StorageUtil;
+import com.mesosphere.sdk.executor.ExecutorTask;
 import org.apache.mesos.ExecutorDriver;
 import org.apache.mesos.Protos;
-import org.apache.mesos.executor.ExecutorTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

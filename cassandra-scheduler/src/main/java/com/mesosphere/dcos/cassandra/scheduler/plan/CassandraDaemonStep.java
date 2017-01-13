@@ -4,12 +4,13 @@ import com.google.protobuf.TextFormat;
 import com.mesosphere.dcos.cassandra.common.offer.PersistentOfferRequirementProvider;
 import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
 import com.mesosphere.dcos.cassandra.common.tasks.*;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
+import com.mesosphere.sdk.offer.OfferRequirement;
+import com.mesosphere.sdk.scheduler.plan.DefaultStep;
+import com.mesosphere.sdk.scheduler.plan.Status;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.mesos.Protos;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.offer.OfferRequirement;
-import org.apache.mesos.scheduler.plan.DefaultStep;
-import org.apache.mesos.scheduler.plan.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -150,7 +151,7 @@ public class CassandraDaemonStep extends DefaultStep {
     @Override
     public void update(Protos.TaskStatus status) {
         try {
-            final String taskName = org.apache.mesos.offer.TaskUtils.toTaskName(status.getTaskId());
+            final String taskName = CommonTaskUtils.toTaskName(status.getTaskId());
             if (!getName().equals(taskName)) {
                 LOGGER.debug("TaskStatus was meant for step: {} and doesn't affect step {}. Status: {}",
                         taskName, getName(), TextFormat.shortDebugString(status));

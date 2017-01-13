@@ -5,14 +5,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mesosphere.dcos.cassandra.common.util.JsonUtils;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.config.Configuration;
+import com.mesosphere.sdk.config.SerializationUtils;
 import io.dropwizard.client.HttpClientConfiguration;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.config.Configuration;
-import org.apache.mesos.config.SerializationUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**

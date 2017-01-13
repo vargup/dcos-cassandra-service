@@ -19,11 +19,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mesosphere.dcos.cassandra.common.CassandraProtos;
 import com.mesosphere.dcos.cassandra.common.util.JsonUtils;
-import org.apache.mesos.offer.VolumeRequirement;
+import com.mesosphere.sdk.offer.VolumeRequirement;
 
 import java.io.IOException;
 import java.util.Objects;
 import java.util.UUID;
+
+//import org.apache.mesos.offer.VolumeRequirement;
 
 /**
  * CassandraConfig is the configuration object for a Cassandra node. It is

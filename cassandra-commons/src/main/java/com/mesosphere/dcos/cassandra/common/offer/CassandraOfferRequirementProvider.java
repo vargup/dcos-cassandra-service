@@ -1,7 +1,7 @@
 package com.mesosphere.dcos.cassandra.common.offer;
 
+import com.mesosphere.sdk.offer.OfferRequirement;
 import org.apache.mesos.Protos;
-import org.apache.mesos.offer.OfferRequirement;
 
 public interface CassandraOfferRequirementProvider {
 

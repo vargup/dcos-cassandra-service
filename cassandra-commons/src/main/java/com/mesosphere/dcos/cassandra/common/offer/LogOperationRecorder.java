@@ -1,7 +1,7 @@
 package com.mesosphere.dcos.cassandra.common.offer;
 
+import com.mesosphere.sdk.offer.OperationRecorder;
 import org.apache.mesos.Protos;
-import org.apache.mesos.offer.OperationRecorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

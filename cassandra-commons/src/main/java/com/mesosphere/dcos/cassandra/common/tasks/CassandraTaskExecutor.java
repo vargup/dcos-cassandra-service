@@ -19,11 +19,10 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.google.protobuf.TextFormat;
 import com.mesosphere.dcos.cassandra.common.config.ExecutorConfig;
+import com.mesosphere.sdk.executor.ExecutorUtils;
+import org.apache.mesos.Protos;
 
 import java.util.*;
-
-import org.apache.mesos.Protos;
-import org.apache.mesos.executor.ExecutorUtils;
 
 import static com.mesosphere.dcos.cassandra.common.util.TaskUtils.*;
 

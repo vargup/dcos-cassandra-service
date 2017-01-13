@@ -3,18 +3,18 @@ package com.mesosphere.dcos.cassandra.scheduler.seeds;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
-import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
-import com.mesosphere.dcos.cassandra.common.tasks.CassandraMode;
-import com.mesosphere.dcos.cassandra.scheduler.client.SchedulerClient;
 import com.mesosphere.dcos.cassandra.common.config.CassandraSchedulerConfiguration;
 import com.mesosphere.dcos.cassandra.common.config.DefaultConfigurationManager;
-import com.mesosphere.dcos.cassandra.scheduler.resources.SeedsResponse;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraMode;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.config.SerializationUtils;
-import org.apache.mesos.state.JsonSerializer;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.StateStoreException;
+import com.mesosphere.dcos.cassandra.scheduler.client.SchedulerClient;
+import com.mesosphere.dcos.cassandra.scheduler.resources.SeedsResponse;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.config.SerializationUtils;
+import com.mesosphere.sdk.state.JsonSerializer;
+import com.mesosphere.sdk.state.StateStore;
+import com.mesosphere.sdk.state.StateStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

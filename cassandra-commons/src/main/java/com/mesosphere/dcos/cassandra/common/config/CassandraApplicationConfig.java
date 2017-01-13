@@ -22,6 +22,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.protobuf.ByteString;
 import com.mesosphere.dcos.cassandra.common.util.JsonUtils;
+import com.mesosphere.sdk.config.SerializationUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -29,8 +30,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-
-import org.apache.mesos.config.SerializationUtils;
 
 /**
  * CassandraApplicationConfig is the configuration class for the

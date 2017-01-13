@@ -3,12 +3,10 @@ package com.mesosphere.dcos.cassandra.common.config;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
-
+import com.mesosphere.sdk.state.JsonSerializer;
+import com.mesosphere.sdk.state.StateStore;
+import com.mesosphere.sdk.state.StateStoreException;
 import io.dropwizard.lifecycle.Managed;
-
-import org.apache.mesos.state.JsonSerializer;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.StateStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

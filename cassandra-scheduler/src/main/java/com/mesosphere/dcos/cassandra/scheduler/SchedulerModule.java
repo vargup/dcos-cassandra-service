@@ -12,19 +12,19 @@ import com.mesosphere.dcos.cassandra.common.serialization.Serializer;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
 import com.mesosphere.dcos.cassandra.scheduler.client.SchedulerClient;
+import com.mesosphere.sdk.api.types.PropertyDeserializer;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.curator.CuratorStateStore;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.dcos.DcosCluster;
+import com.mesosphere.sdk.state.JsonSerializer;
+import com.mesosphere.sdk.state.StateStore;
 import io.dropwizard.client.HttpClientBuilder;
 import io.dropwizard.setup.Environment;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.retry.RetryForever;
 import org.apache.curator.retry.RetryUntilElapsed;
 import org.apache.http.client.HttpClient;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.curator.CuratorStateStore;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.dcos.DcosCluster;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.api.JsonPropertyDeserializer;
-import org.apache.mesos.state.api.PropertyDeserializer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -113,6 +113,6 @@ public class SchedulerModule extends AbstractModule {
         bind(PersistentOfferRequirementProvider.class);
         bind(CassandraState.class).asEagerSingleton();
         bind(ClusterTaskOfferRequirementProvider.class);
-        bind(PropertyDeserializer.class).to(JsonPropertyDeserializer.class);
+        bind(PropertyDeserializer.class).to(JsonSerializer.class);
     }
 }

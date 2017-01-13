@@ -19,12 +19,12 @@ import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.config.CassandraConfig;
 import com.mesosphere.dcos.cassandra.common.config.ExecutorConfig;
 import com.mesosphere.dcos.cassandra.common.util.TaskUtils;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.offer.VolumeRequirement;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.DiscoveryInfo;
 import org.apache.mesos.Protos.Port;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.offer.VolumeRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

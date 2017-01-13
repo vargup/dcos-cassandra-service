@@ -1,13 +1,13 @@
 package com.mesosphere.dcos.cassandra.common.config;
 
 import com.mesosphere.dcos.cassandra.common.offer.PersistentOfferRequirementProvider;
+import com.mesosphere.sdk.config.ConfigStore;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.config.Configuration;
+import com.mesosphere.sdk.config.ConfigurationFactory;
+import com.mesosphere.sdk.curator.CuratorConfigStore;
+import com.mesosphere.sdk.state.StateStore;
 import org.apache.mesos.Protos;
-import org.apache.mesos.config.ConfigStore;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.config.Configuration;
-import org.apache.mesos.config.ConfigurationFactory;
-import org.apache.mesos.curator.CuratorConfigStore;
-import org.apache.mesos.state.StateStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

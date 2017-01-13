@@ -5,9 +5,9 @@ import com.mesosphere.dcos.cassandra.common.config.ConfigurationManager;
 import com.mesosphere.dcos.cassandra.common.config.ServiceConfig;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.dcos.Capabilities;
 import org.apache.mesos.Protos;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.dcos.Capabilities;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

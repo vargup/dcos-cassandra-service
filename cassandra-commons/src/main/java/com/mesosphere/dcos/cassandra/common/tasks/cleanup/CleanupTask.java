@@ -15,9 +15,11 @@
  */
 package com.mesosphere.dcos.cassandra.common.tasks.cleanup;
 
-import com.mesosphere.dcos.cassandra.common.tasks.*;
-
-import org.apache.mesos.offer.TaskUtils;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraData;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraTaskStatus;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
 import org.apache.mesos.Protos;
 
 import java.util.Optional;
@@ -77,11 +79,11 @@ public class CleanupTask extends CassandraTask {
         String name = nameForDaemon(daemon);
         Protos.TaskInfo completedTemplate = Protos.TaskInfo.newBuilder(template)
                 .setName(name)
-                .setTaskId(TaskUtils.toTaskId(name))
+                .setTaskId(CommonTaskUtils.toTaskId(name))
                 .setData(data.getBytes())
                 .build();
 
-        completedTemplate = org.apache.mesos.offer.TaskUtils.clearTransient(completedTemplate);
+        completedTemplate = CommonTaskUtils.clearTransient(completedTemplate);
 
         return new CleanupTask(completedTemplate);
     }

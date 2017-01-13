@@ -5,7 +5,9 @@ import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.google.common.io.Resources;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
-
+import com.mesosphere.sdk.curator.CuratorStateStore;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.state.StateStore;
 import io.dropwizard.configuration.ConfigurationFactory;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.FileConfigurationSourceProvider;
@@ -16,17 +18,12 @@ import org.apache.curator.RetryPolicy;
 import org.apache.curator.retry.RetryForever;
 import org.apache.curator.retry.RetryUntilElapsed;
 import org.apache.curator.test.TestingServer;
-import org.apache.mesos.curator.CuratorStateStore;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.state.StateStore;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.File;
 import java.net.URI;
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;

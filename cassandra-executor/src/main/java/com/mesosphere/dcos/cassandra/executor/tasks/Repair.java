@@ -17,11 +17,12 @@ package com.mesosphere.dcos.cassandra.executor.tasks;
 
 import com.mesosphere.dcos.cassandra.common.tasks.repair.RepairTask;
 import com.mesosphere.dcos.cassandra.executor.CassandraDaemonProcess;
+import com.mesosphere.sdk.executor.ExecutorTask;
 import org.apache.cassandra.repair.RepairParallelism;
 import org.apache.cassandra.repair.messages.RepairOption;
 import org.apache.mesos.ExecutorDriver;
 import org.apache.mesos.Protos;
-import org.apache.mesos.executor.ExecutorTask;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

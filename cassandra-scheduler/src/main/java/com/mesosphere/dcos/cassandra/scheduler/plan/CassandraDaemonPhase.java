@@ -4,12 +4,12 @@ import com.mesosphere.dcos.cassandra.common.config.CassandraSchedulerConfigurati
 import com.mesosphere.dcos.cassandra.common.config.DefaultConfigurationManager;
 import com.mesosphere.dcos.cassandra.common.offer.PersistentOfferRequirementProvider;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
-import com.mesosphere.dcos.cassandra.scheduler.client.SchedulerClient;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.scheduler.plan.DefaultPhase;
-import org.apache.mesos.scheduler.plan.Step;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.dcos.cassandra.scheduler.client.SchedulerClient;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.scheduler.plan.DefaultPhase;
+import com.mesosphere.sdk.scheduler.plan.Step;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
 
 import java.io.IOException;
 import java.util.ArrayList;

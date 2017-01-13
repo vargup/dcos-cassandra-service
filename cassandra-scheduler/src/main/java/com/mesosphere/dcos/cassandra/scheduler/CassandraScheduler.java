@@ -22,28 +22,25 @@ import com.mesosphere.dcos.cassandra.scheduler.plan.repair.RepairManager;
 import com.mesosphere.dcos.cassandra.scheduler.plan.upgradesstable.UpgradeSSTableManager;
 import com.mesosphere.dcos.cassandra.scheduler.resources.*;
 import com.mesosphere.dcos.cassandra.scheduler.seeds.SeedsManager;
-
+import com.mesosphere.sdk.api.PlansResource;
+import com.mesosphere.sdk.api.StateResource;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.offer.OfferAccepter;
+import com.mesosphere.sdk.offer.ResourceCleaner;
+import com.mesosphere.sdk.offer.ResourceCleanerScheduler;
+import com.mesosphere.sdk.offer.evaluate.OfferEvaluator;
+import com.mesosphere.sdk.reconciliation.DefaultReconciler;
+import com.mesosphere.sdk.reconciliation.Reconciler;
+import com.mesosphere.sdk.scheduler.DefaultTaskKiller;
+import com.mesosphere.sdk.scheduler.SchedulerDriverFactory;
+import com.mesosphere.sdk.scheduler.TaskKiller;
+import com.mesosphere.sdk.scheduler.plan.*;
+import com.mesosphere.sdk.scheduler.recovery.DefaultTaskFailureListener;
+import com.mesosphere.sdk.state.JsonSerializer;
+import com.mesosphere.sdk.state.StateStore;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Scheduler;
 import org.apache.mesos.SchedulerDriver;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.offer.OfferAccepter;
-import org.apache.mesos.offer.OfferEvaluator;
-import org.apache.mesos.offer.ResourceCleaner;
-import org.apache.mesos.offer.ResourceCleanerScheduler;
-import org.apache.mesos.reconciliation.DefaultReconciler;
-import org.apache.mesos.reconciliation.Reconciler;
-import org.apache.mesos.scheduler.DefaultTaskKiller;
-import org.apache.mesos.scheduler.Observable;
-import org.apache.mesos.scheduler.Observer;
-import org.apache.mesos.scheduler.SchedulerDriverFactory;
-import org.apache.mesos.scheduler.TaskKiller;
-import org.apache.mesos.scheduler.plan.*;
-import org.apache.mesos.scheduler.plan.api.PlansResource;
-import org.apache.mesos.scheduler.recovery.DefaultTaskFailureListener;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.api.JsonPropertyDeserializer;
-import org.apache.mesos.state.api.StateResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -180,7 +177,7 @@ public class CassandraScheduler implements Scheduler, Observer {
                     new DataCenterResource(seeds),
                     new ConnectionResource(capabilities, cassandraState, configurationManager),
                     // TODO(nick) rename upstream to StringPropertyDeserializer:
-                    new StateResource(stateStore, new JsonPropertyDeserializer())));
+                    new StateResource(stateStore, new JsonSerializer())));
         } catch (Throwable t) {
             String error = "An error occurred when registering " +
                     "the framework and initializing the execution plan.";

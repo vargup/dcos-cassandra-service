@@ -4,10 +4,10 @@ import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.offer.PersistentOfferRequirementProvider;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraDaemonTask;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraTaskExecutor;
+import com.mesosphere.sdk.config.ConfigStoreException;
 import io.dropwizard.lifecycle.Managed;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.mesos.Protos;
-import org.apache.mesos.config.ConfigStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

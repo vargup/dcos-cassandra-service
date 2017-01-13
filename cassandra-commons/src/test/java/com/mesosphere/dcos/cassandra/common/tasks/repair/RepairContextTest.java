@@ -1,8 +1,7 @@
 package com.mesosphere.dcos.cassandra.common.tasks.repair;
 
 import com.google.common.collect.Iterators;
-
-import org.apache.mesos.state.JsonSerializer;
+import com.mesosphere.sdk.state.JsonSerializer;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Assert;

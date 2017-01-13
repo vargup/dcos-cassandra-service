@@ -5,6 +5,12 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.google.common.io.Resources;
 import com.mesosphere.dcos.cassandra.common.config.*;
 import com.mesosphere.dcos.cassandra.common.tasks.*;
+import com.mesosphere.sdk.curator.CuratorStateStore;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
+import com.mesosphere.sdk.offer.ResourceUtils;
+import com.mesosphere.sdk.offer.TaskException;
+import com.mesosphere.sdk.state.StateStore;
 import io.dropwizard.configuration.ConfigurationFactory;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.FileConfigurationSourceProvider;
@@ -16,12 +22,6 @@ import org.apache.curator.retry.RetryForever;
 import org.apache.curator.retry.RetryUntilElapsed;
 import org.apache.curator.test.TestingServer;
 import org.apache.mesos.Protos;
-import org.apache.mesos.curator.CuratorStateStore;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.offer.ResourceUtils;
-import org.apache.mesos.offer.TaskException;
-import org.apache.mesos.offer.TaskUtils;
-import org.apache.mesos.state.StateStore;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -193,7 +193,7 @@ public class CassandraStateTest {
     private void validateDaemonTaskInfo(Protos.TaskInfo daemonTaskInfo) throws TaskException {
         Assert.assertEquals(testDaemonName, daemonTaskInfo.getName());
         Assert.assertEquals(4, daemonTaskInfo.getResourcesCount());
-        Assert.assertEquals(testDaemonName, TaskUtils.toTaskName(daemonTaskInfo.getTaskId()));
+        Assert.assertEquals(testDaemonName, CommonTaskUtils.toTaskName(daemonTaskInfo.getTaskId()));
         Assert.assertTrue(daemonTaskInfo.getSlaveId().getValue().isEmpty());
 
         for (Protos.Resource resource : daemonTaskInfo.getResourcesList()) {

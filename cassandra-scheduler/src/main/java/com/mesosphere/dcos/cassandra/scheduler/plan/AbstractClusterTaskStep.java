@@ -4,12 +4,12 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.protobuf.TextFormat;
 import com.mesosphere.dcos.cassandra.common.offer.CassandraOfferRequirementProvider;
 import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
-import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
+import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
+import com.mesosphere.sdk.offer.OfferRequirement;
+import com.mesosphere.sdk.scheduler.plan.DefaultStep;
+import com.mesosphere.sdk.scheduler.plan.Status;
 import org.apache.mesos.Protos;
-import org.apache.mesos.offer.OfferRequirement;
-import org.apache.mesos.scheduler.plan.DefaultStep;
-import org.apache.mesos.scheduler.plan.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +108,7 @@ public abstract class AbstractClusterTaskStep extends DefaultStep {
                 if (Protos.TaskState.TASK_FINISHED.equals(task.getState())) {
                     setStatus(Status.COMPLETE);
                 } else if (Protos.TaskState.TASK_RUNNING.equals(task.getState())) {
-                    setStatus(Status.IN_PROGRESS);
+                    setStatus(Status.STARTING);
                 } else if (task.isTerminated()) {
                     //need to progress with a new task
                     cassandraState.remove(getName());

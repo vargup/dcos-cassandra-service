@@ -1,9 +1,10 @@
 package com.mesosphere.dcos.cassandra.common.util;
 
-import java.util.*;
+import com.mesosphere.sdk.offer.RangeAlgorithms;
+import com.mesosphere.sdk.offer.ResourceUtils;
 import org.apache.mesos.Protos.*;
-import org.apache.mesos.offer.ResourceUtils;
-import org.apache.mesos.util.Algorithms;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TaskUtils {
@@ -116,7 +117,7 @@ public class TaskUtils {
     }
 
     public static List<Value.Range> createPortRanges(final Collection<Integer> ports) {
-        return Algorithms.createRanges(ports);
+        return RangeAlgorithms.createRanges(ports);
     }
 
     public static Resource createRanges(
@@ -154,7 +155,7 @@ public class TaskUtils {
         final Collection<Integer> ports,
         final String role,
         final String principal) {
-        return ResourceUtils.getDesiredRanges(role, principal, PORTS, Algorithms.createRanges(ports));
+        return ResourceUtils.getDesiredRanges(role, principal, PORTS, RangeAlgorithms.createRanges(ports));
     }
 
 

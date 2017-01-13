@@ -1,9 +1,9 @@
 package com.mesosphere.dcos.cassandra.common.tasks;
 
 import com.mesosphere.dcos.cassandra.common.config.*;
+import com.mesosphere.sdk.dcos.Capabilities;
+import com.mesosphere.sdk.offer.VolumeRequirement;
 import org.apache.mesos.Protos;
-import org.apache.mesos.dcos.Capabilities;
-import org.apache.mesos.offer.VolumeRequirement;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

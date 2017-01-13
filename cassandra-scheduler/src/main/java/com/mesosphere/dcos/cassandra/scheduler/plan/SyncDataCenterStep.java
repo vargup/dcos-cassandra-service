@@ -2,9 +2,9 @@ package com.mesosphere.dcos.cassandra.scheduler.plan;
 
 import com.mesosphere.dcos.cassandra.scheduler.seeds.DataCenterInfo;
 import com.mesosphere.dcos.cassandra.scheduler.seeds.SeedsManager;
-import org.apache.mesos.offer.OfferRequirement;
-import org.apache.mesos.scheduler.plan.DefaultStep;
-import org.apache.mesos.scheduler.plan.Status;
+import com.mesosphere.sdk.offer.OfferRequirement;
+import com.mesosphere.sdk.scheduler.plan.DefaultStep;
+import com.mesosphere.sdk.scheduler.plan.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +49,7 @@ public class SyncDataCenterStep extends DefaultStep implements Runnable {
             setStatus(Status.COMPLETE);
         } else {
             LOGGER.info("Step {} : Syncing data center {}", getName(), url);
-            setStatus(Status.IN_PROGRESS);
+            setStatus(Status.STARTING);
             executor.execute(this);
         }
         return Optional.empty();

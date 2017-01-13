@@ -8,7 +8,7 @@ import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
 import com.mesosphere.dcos.cassandra.common.tasks.backup.BackupRestoreContext;
 import com.mesosphere.dcos.cassandra.common.tasks.backup.RestoreSchemaTask;
 import com.mesosphere.dcos.cassandra.scheduler.plan.AbstractClusterTaskStep;
-import org.apache.mesos.scheduler.plan.Status;
+import com.mesosphere.sdk.scheduler.plan.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

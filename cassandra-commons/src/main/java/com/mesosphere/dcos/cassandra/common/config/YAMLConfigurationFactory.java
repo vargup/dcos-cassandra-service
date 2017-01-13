@@ -4,10 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.config.Configuration;
+import com.mesosphere.sdk.config.ConfigurationFactory;
 import io.dropwizard.jackson.Jackson;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.config.Configuration;
-import org.apache.mesos.config.ConfigurationFactory;
 
 public class YAMLConfigurationFactory implements ConfigurationFactory<Configuration> {
     private Class<?> typeParameterClass;

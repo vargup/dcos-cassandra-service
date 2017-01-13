@@ -3,10 +3,10 @@ package com.mesosphere.dcos.cassandra.scheduler.plan;
 
 import com.mesosphere.dcos.cassandra.scheduler.seeds.DataCenterInfo;
 import com.mesosphere.dcos.cassandra.scheduler.seeds.SeedsManager;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.scheduler.plan.DefaultPhase;
-import org.apache.mesos.scheduler.plan.Step;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.scheduler.plan.DefaultPhase;
+import com.mesosphere.sdk.scheduler.plan.Step;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
 
 import java.util.Collections;
 import java.util.List;

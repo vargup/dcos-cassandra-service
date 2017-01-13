@@ -20,7 +20,7 @@ import com.mesosphere.dcos.cassandra.executor.tasks.CassandraTaskFactory;
 import org.apache.mesos.Executor;
 import org.apache.mesos.ExecutorDriver;
 import org.apache.mesos.Protos;
-import org.apache.mesos.executor.CustomExecutor;
+import com.mesosphere.sdk.executor.CustomExecutor;
 
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;

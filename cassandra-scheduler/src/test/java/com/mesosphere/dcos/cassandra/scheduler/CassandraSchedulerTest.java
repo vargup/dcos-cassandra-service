@@ -265,7 +265,7 @@ public class CassandraSchedulerTest {
         taskStatuses = cassandraState.getTaskStatuses();
         final Optional<Protos.TaskStatus> node0Status = taskStatuses.stream().filter(status -> {
             try {
-                return org.apache.mesos.offer.TaskUtils.toTaskName(status.getTaskId()).equals(task.getTaskInfo().getName());
+                return CommonTaskUtils.toTaskName(status.getTaskId()).equals(task.getTaskInfo().getName());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

@@ -7,17 +7,13 @@ import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
 import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableContext;
 import com.mesosphere.dcos.cassandra.scheduler.resources.UpgradeSSTableRequest;
-import org.apache.mesos.scheduler.plan.DefaultPhase;
-import org.apache.mesos.scheduler.plan.Phase;
-import org.apache.mesos.scheduler.plan.Step;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
-import org.apache.mesos.state.StateStore;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.mesosphere.sdk.scheduler.plan.DefaultPhase;
+import com.mesosphere.sdk.scheduler.plan.Phase;
+import com.mesosphere.sdk.scheduler.plan.Step;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.sdk.state.StateStore;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UpgradeSSTableManager extends ClusterTaskManager<UpgradeSSTableRequest, UpgradeSSTableContext> {

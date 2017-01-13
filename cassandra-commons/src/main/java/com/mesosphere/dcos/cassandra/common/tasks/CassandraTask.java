@@ -23,12 +23,12 @@ import com.mesosphere.dcos.cassandra.common.tasks.backup.*;
 import com.mesosphere.dcos.cassandra.common.tasks.cleanup.CleanupTask;
 import com.mesosphere.dcos.cassandra.common.tasks.repair.RepairTask;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableTask;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
+import com.mesosphere.sdk.offer.RangeAlgorithms;
+import com.mesosphere.sdk.offer.ResourceUtils;
+import com.mesosphere.sdk.offer.VolumeRequirement;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.DiscoveryInfo;
-import org.apache.mesos.offer.ResourceUtils;
-import org.apache.mesos.offer.TaskUtils;
-import org.apache.mesos.offer.VolumeRequirement;
-import org.apache.mesos.util.Algorithms;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
@@ -170,7 +170,7 @@ public abstract class CassandraTask {
      * @return A universally unique identifier.
      */
     public static Protos.TaskID createId(final String name) {
-        return TaskUtils.toTaskId(name);
+        return CommonTaskUtils.toTaskId(name);
     }
 
     protected final Protos.TaskInfo info;
@@ -244,7 +244,7 @@ public abstract class CassandraTask {
         }
 
         if (!ports.isEmpty()) {
-            builder.addResources(ResourceUtils.getDesiredRanges(role, principal, "ports", Algorithms.createRanges(ports)));
+            builder.addResources(ResourceUtils.getDesiredRanges(role, principal, "ports", RangeAlgorithms.createRanges(ports)));
         }
 
         if (discoveryInfo != null) {

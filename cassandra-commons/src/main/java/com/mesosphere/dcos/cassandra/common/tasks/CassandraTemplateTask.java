@@ -2,11 +2,9 @@ package com.mesosphere.dcos.cassandra.common.tasks;
 
 import com.mesosphere.dcos.cassandra.common.config.ClusterTaskConfig;
 import com.mesosphere.dcos.cassandra.common.tasks.backup.TemplateTaskStatus;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
+import com.mesosphere.sdk.offer.ResourceUtils;
 import org.apache.mesos.Protos;
-import org.apache.mesos.offer.ResourceUtils;
-import org.apache.mesos.offer.TaskUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -50,7 +48,7 @@ public class CassandraTemplateTask extends CassandraTask  {
                         getMemResource(role, principal, clusterTaskConfig)))
                 .build();
 
-        taskInfo = TaskUtils.setTransient(taskInfo);
+        taskInfo = CommonTaskUtils.setTransient(taskInfo);
 
         return new CassandraTemplateTask(taskInfo);
     }

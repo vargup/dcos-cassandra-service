@@ -9,7 +9,7 @@ import com.mesosphere.dcos.cassandra.common.tasks.CassandraTask;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableContext;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableTask;
 import com.mesosphere.dcos.cassandra.scheduler.plan.AbstractClusterTaskStep;
-import org.apache.mesos.scheduler.plan.Status;
+import com.mesosphere.sdk.scheduler.plan.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

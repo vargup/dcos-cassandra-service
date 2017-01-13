@@ -15,9 +15,10 @@
  */
 package com.mesosphere.dcos.cassandra.common.util;
 
+import com.mesosphere.sdk.config.SerializationUtils;
+
 import java.io.IOException;
 
-import org.apache.mesos.config.SerializationUtils;
 
 /**
  * Contains static Json manipulation utilities.

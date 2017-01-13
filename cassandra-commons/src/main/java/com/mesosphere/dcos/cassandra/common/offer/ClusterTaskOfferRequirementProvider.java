@@ -1,9 +1,9 @@
 package com.mesosphere.dcos.cassandra.common.offer;
 
+import com.mesosphere.sdk.offer.InvalidRequirementException;
+import com.mesosphere.sdk.offer.OfferRequirement;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.ExecutorInfo;
-import org.apache.mesos.offer.InvalidRequirementException;
-import org.apache.mesos.offer.OfferRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ public class ClusterTaskOfferRequirementProvider implements CassandraOfferRequir
         taskInfo = Protos.TaskInfo.newBuilder(taskInfo).clearExecutor().build();
 
         try {
-            return OfferRequirement.create(type, Arrays.asList(taskInfo), Optional.of(execInfo));
+            return OfferRequirement.create(type, 0, Arrays.asList(taskInfo), Optional.of(execInfo));
         } catch (InvalidRequirementException e) {
             LOGGER.error("Failed to construct OfferRequirement with Exception: ", e);
             return null;
@@ -42,7 +42,7 @@ public class ClusterTaskOfferRequirementProvider implements CassandraOfferRequir
         taskInfo = Protos.TaskInfo.newBuilder(taskInfo).clearExecutor().build();
 
         try {
-            return OfferRequirement.create(type, Arrays.asList(taskInfo), Optional.of(execInfo));
+            return OfferRequirement.create(type, 0, Arrays.asList(taskInfo), Optional.of(execInfo));
         } catch (InvalidRequirementException e) {
             LOGGER.error("Failed to construct OfferRequirement with Exception: ", e);
             return null;
@@ -62,7 +62,7 @@ public class ClusterTaskOfferRequirementProvider implements CassandraOfferRequir
         taskInfo = Protos.TaskInfo.newBuilder(taskInfo).clearExecutor().build();
 
         try {
-            return OfferRequirement.create(type, Arrays.asList(taskInfo), Optional.of(execInfo));
+            return OfferRequirement.create(type, 0, Arrays.asList(taskInfo), Optional.of(execInfo));
         } catch (InvalidRequirementException e) {
             LOGGER.error("Failed to construct OfferRequirement with Exception: ", e);
             return null;

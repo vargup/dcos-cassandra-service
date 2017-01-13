@@ -1,18 +1,17 @@
 package com.mesosphere.dcos.cassandra.common.tasks;
 
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-
-import org.apache.mesos.scheduler.ChainedObserver;
-import org.apache.mesos.scheduler.plan.Phase;
-import org.apache.mesos.state.JsonSerializer;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.StateStoreException;
+import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
+import com.mesosphere.sdk.scheduler.ChainedObserver;
+import com.mesosphere.sdk.scheduler.plan.Phase;
+import com.mesosphere.sdk.state.JsonSerializer;
+import com.mesosphere.sdk.state.StateStore;
+import com.mesosphere.sdk.state.StateStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Interface for managers of ClusterTask execution (e.g Backup, Restore, Cleanup, ... )

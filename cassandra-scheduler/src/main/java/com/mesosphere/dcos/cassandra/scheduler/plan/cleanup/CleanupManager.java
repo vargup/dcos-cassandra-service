@@ -1,24 +1,19 @@
 package com.mesosphere.dcos.cassandra.scheduler.plan.cleanup;
 
-import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
-import com.mesosphere.dcos.cassandra.common.tasks.cleanup.CleanupContext;
 import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.offer.ClusterTaskOfferRequirementProvider;
 import com.mesosphere.dcos.cassandra.common.persistence.PersistenceException;
-import com.mesosphere.dcos.cassandra.scheduler.resources.CleanupRequest;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraState;
+import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
+import com.mesosphere.dcos.cassandra.common.tasks.cleanup.CleanupContext;
+import com.mesosphere.dcos.cassandra.scheduler.resources.CleanupRequest;
+import com.mesosphere.sdk.scheduler.plan.DefaultPhase;
+import com.mesosphere.sdk.scheduler.plan.Phase;
+import com.mesosphere.sdk.scheduler.plan.Step;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.sdk.state.StateStore;
 
-import org.apache.mesos.scheduler.plan.DefaultPhase;
-import org.apache.mesos.scheduler.plan.Phase;
-import org.apache.mesos.scheduler.plan.Step;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
-import org.apache.mesos.state.StateStore;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CleanupManager extends ClusterTaskManager<CleanupRequest, CleanupContext> {

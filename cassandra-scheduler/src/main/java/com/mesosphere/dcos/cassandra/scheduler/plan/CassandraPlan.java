@@ -2,13 +2,12 @@ package com.mesosphere.dcos.cassandra.scheduler.plan;
 
 import com.mesosphere.dcos.cassandra.common.config.DefaultConfigurationManager;
 import com.mesosphere.dcos.cassandra.common.tasks.ClusterTaskManager;
-
-import org.apache.mesos.scheduler.plan.DefaultPlan;
-import org.apache.mesos.scheduler.plan.Phase;
-import org.apache.mesos.scheduler.plan.ReconciliationPhase;
-import org.apache.mesos.scheduler.plan.Status;
-import org.apache.mesos.scheduler.plan.strategy.SerialStrategy;
-import org.apache.mesos.scheduler.plan.strategy.Strategy;
+import com.mesosphere.sdk.scheduler.plan.DefaultPlan;
+import com.mesosphere.sdk.scheduler.plan.Phase;
+import com.mesosphere.sdk.scheduler.plan.ReconciliationPhase;
+import com.mesosphere.sdk.scheduler.plan.Status;
+import com.mesosphere.sdk.scheduler.plan.strategy.SerialStrategy;
+import com.mesosphere.sdk.scheduler.plan.strategy.Strategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

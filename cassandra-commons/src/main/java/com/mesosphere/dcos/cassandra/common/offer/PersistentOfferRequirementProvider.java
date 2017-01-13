@@ -4,14 +4,14 @@ import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.config.CassandraSchedulerConfiguration;
 import com.mesosphere.dcos.cassandra.common.config.DefaultConfigurationManager;
 import com.mesosphere.dcos.cassandra.common.tasks.CassandraContainer;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.offer.InvalidRequirementException;
+import com.mesosphere.sdk.offer.OfferRequirement;
+import com.mesosphere.sdk.offer.constrain.MarathonConstraintParser;
+import com.mesosphere.sdk.offer.constrain.PassthroughRule;
+import com.mesosphere.sdk.offer.constrain.PlacementRule;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.ExecutorInfo;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.offer.InvalidRequirementException;
-import org.apache.mesos.offer.OfferRequirement;
-import org.apache.mesos.offer.constrain.MarathonConstraintParser;
-import org.apache.mesos.offer.constrain.PassthroughRule;
-import org.apache.mesos.offer.constrain.PlacementRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +47,7 @@ public class PersistentOfferRequirementProvider {
 
             return Optional.of(OfferRequirement.create(
                     container.getDaemonTask().getType().name(),
+                    0,
                     clearTaskIds(updatedTaskInfos),
                     Optional.of(clearExecutorId(container.getExecutorInfo())),
                     placementRule));
@@ -61,6 +62,7 @@ public class PersistentOfferRequirementProvider {
         try {
             return Optional.of(OfferRequirement.create(
                     container.getDaemonTask().getType().name(),
+                    0,
                     clearTaskIds(container.getTaskInfos()),
                     Optional.of(clearExecutorId(container.getExecutorInfo())),
                     Optional.empty()));

@@ -4,10 +4,10 @@ package com.mesosphere.dcos.cassandra.scheduler.resources;
 import com.codahale.metrics.annotation.Counted;
 import com.google.inject.Inject;
 import com.mesosphere.dcos.cassandra.common.config.CassandraConfig;
-import com.mesosphere.dcos.cassandra.common.config.ExecutorConfig;
 import com.mesosphere.dcos.cassandra.common.config.CassandraSchedulerConfiguration;
 import com.mesosphere.dcos.cassandra.common.config.DefaultConfigurationManager;
-import org.apache.mesos.config.ConfigStoreException;
+import com.mesosphere.dcos.cassandra.common.config.ExecutorConfig;
+import com.mesosphere.sdk.config.ConfigStoreException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

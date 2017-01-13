@@ -18,16 +18,16 @@ import com.mesosphere.dcos.cassandra.common.tasks.repair.RepairContext;
 import com.mesosphere.dcos.cassandra.common.tasks.repair.RepairTask;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableContext;
 import com.mesosphere.dcos.cassandra.common.tasks.upgradesstable.UpgradeSSTableTask;
+import com.mesosphere.sdk.config.ConfigStoreException;
+import com.mesosphere.sdk.offer.CommonTaskUtils;
+import com.mesosphere.sdk.offer.TaskException;
+import com.mesosphere.sdk.state.SchedulerState;
+import com.mesosphere.sdk.state.StateStore;
+import com.mesosphere.sdk.state.StateStoreException;
 import io.dropwizard.lifecycle.Managed;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.Offer;
-import org.apache.mesos.config.ConfigStoreException;
-import org.apache.mesos.offer.TaskException;
-import org.apache.mesos.offer.TaskUtils;
-import org.apache.mesos.state.SchedulerState;
-import org.apache.mesos.state.StateStore;
-import org.apache.mesos.state.StateStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,7 +74,7 @@ public class CassandraState extends SchedulerState implements Managed {
 
                 for (Protos.TaskInfo taskInfo : taskInfos) {
                     try {
-                        Protos.TaskInfo unpackedInfo = TaskUtils.unpackTaskInfo(taskInfo);
+                        Protos.TaskInfo unpackedInfo = CommonTaskUtils.unpackTaskInfo(taskInfo);
                         final CassandraTask cassandraTask = CassandraTask.parse(unpackedInfo);
 
                         final boolean isTemplateTask = CassandraTemplateTask.isTemplateTaskName(taskInfo.getName());
@@ -87,7 +87,7 @@ public class CassandraState extends SchedulerState implements Managed {
 
                             LOGGER.info("Writing updated TaskInfo for task {} to StateStore to fix corrupted " +
                                     "CassandraTask.TYPE Enum.", taskInfo.getName());
-                            getStateStore().storeTasks(Arrays.asList(TaskUtils.packTaskInfo(updatedUnpackedInfo)));
+                            getStateStore().storeTasks(Arrays.asList(CommonTaskUtils.packTaskInfo(updatedUnpackedInfo)));
                         }
 
                         LOGGER.debug("Loaded task: {}, type: {}, hostname: {}",
@@ -553,7 +553,7 @@ public class CassandraState extends SchedulerState implements Managed {
 
     public void update(CassandraTask task) throws PersistenceException {
         synchronized (getStateStore()) {
-            getStateStore().storeTasks(Arrays.asList(TaskUtils.packTaskInfo(task.getTaskInfo())));
+            getStateStore().storeTasks(Arrays.asList(CommonTaskUtils.packTaskInfo(task.getTaskInfo())));
             if (tasks.containsKey(task.getName())) {
                 byId.remove(tasks.get(task.getName()).getId());
             }
@@ -582,7 +582,7 @@ public class CassandraState extends SchedulerState implements Managed {
         try {
             CassandraTask task = CassandraTask.parse(taskInfo);
             task = task.update(offer);
-            getStateStore().storeTasks(Arrays.asList(TaskUtils.packTaskInfo(task.getTaskInfo())));
+            getStateStore().storeTasks(Arrays.asList(CommonTaskUtils.packTaskInfo(task.getTaskInfo())));
             update(task);
         } catch (Exception e) {
             LOGGER.error("Error storing task: {}, reason: {}", taskInfo, e);
@@ -599,7 +599,7 @@ public class CassandraState extends SchedulerState implements Managed {
                     getStateStore().storeStatus(status);
                 } else {
                     Optional<Protos.TaskStatus> taskStatusOptional =
-                            getStateStore().fetchStatus(TaskUtils.toTaskName(status.getTaskId()));
+                            getStateStore().fetchStatus(CommonTaskUtils.toTaskName(status.getTaskId()));
 
                     if (taskStatusOptional.isPresent()) {
                         if (taskStatusOptional.get().hasData()) {
